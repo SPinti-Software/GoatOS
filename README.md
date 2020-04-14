@@ -1,0 +1,2 @@
+# GoatOS
+Successor of CraftyOS.
