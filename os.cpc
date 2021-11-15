@@ -9,15 +9,15 @@ if/ "%SCR_Auto%" == "true" then:
     // set/ SCR_RES = /f:cpc.check_best_resolution()
     // set/ SCR_BIT = /f:cpc.check_best_resolution_color()
 else:
-    set/ SCR_RES = 1024
-    set/ SCR_BIT = 768
+    set/ SCR_RES = 1024x768
+    set/ SCR_BIT = 32
 end/ if
 
 // Default background color
 SET/ SCR_COLOR = 128,255,000
 
 // Default background screen
-SET/ SCR_IMG = C:\CPCDOS\CpcdosOS2.1\bin\OS\MEDIA\IMPRESSU.png
+SET/ SCR_IMG = OS/MEDIA/bckgnd/IMPRESSU.png
 
 ccp/ /set.level = 4
 
@@ -28,8 +28,8 @@ ccp/ /set.level = 4
 // **************************************************
 
 set/ OS_NAME = GoatOS
-set/ OS_Author = Seb
-set/ OS_Compagny = SPinti
+set/ OS_Author = Everyone
+set/ OS_Compagny = SPinti-Software
 set/ OS_Created = 15-NOV-2021
 set/ OS_Updated = 15-NOV-2021
 
@@ -40,10 +40,11 @@ set/ OS_Updated = 15-NOV-2021
 // ***************************************************
 
 set/ HOST_OS = OS/GOATOS
-set/ GUI_OS = GOATOS/media
+set/ Media_OS = %HOST_OS%/media
+set/ GUI_OS = %Media_OS%/GUI
 
 // Background image
-set/ SCR_IMG = %GUI_OS%/IMPRESSU.png
+set/ SCR_IMG = %Media_OS%/bckgnd/IMPRESSU.png
 
 // Screenshot folder
 set/ SCR_SAVE = %CPC_TEMP%/SCR
@@ -52,7 +53,7 @@ set/ SCR_SAVE = %CPC_TEMP%/SCR
 // ** [EN] Starting Graphic User Interface             **
 // ** [FR] Demarrer l'interface utilisateur graphique  **
 // ******************************************************
-gui/ 
+gui/
 
 // Load icon on GUI
 sys/ /fileformat-gui-load
@@ -70,7 +71,6 @@ if/ "%desktop_Icons%" == "true" then:
     set/ handle_desktop = /F:Init_Desktop(MyDesktop, ./, %pos_x%, %pos_y%, %size_X%, %size_Y%)
 end/ if
 
-
-
-
+refresh/ /all
+sys/ /os:%OS_NAME%
 
