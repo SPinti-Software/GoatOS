@@ -1,0 +1,16 @@
+// Startup program after booting.
+
+ccp/ /set.level = 4
+
+if/ "%PID_logon%" == "0" then:
+
+    // Create logon process
+    @#PID_logon SYS/ /processus _GOATOS__LOGON
+
+    // Execute logon program into "_GOATOS__LOGON" process
+    CMD/ /PID:%PID_logon% exe/ & %LOGON_OS%/logon.cpc
+
+end/ if
+
+
+

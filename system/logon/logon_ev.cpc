@@ -1,0 +1,13 @@
+// All events functions are located here
+
+
+function/ _LOGON_WINDOW.MouseClick()
+
+    ccp/ /set.level = 2
+
+    msgbox/ Test!
+
+end/ function
+
+
+

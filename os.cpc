@@ -39,7 +39,12 @@ set/ OS_Updated = 15-NOV-2021
 // ** [FR] Configuration du systeme d'exploitation  **
 // ***************************************************
 
+// Main folder-variables
 set/ HOST_OS = OS/GOATOS
+set/ SYSTEM_OS = %HOST_OS%/system
+set/ LOGON_OS = %SYSTEM_OS%/logon
+set/ DESKTOP_OS = %SYSTEM_OS%/desktop
+
 set/ Media_OS = %HOST_OS%/media
 set/ GUI_OS = %Media_OS%/GUI
 
@@ -48,6 +53,10 @@ set/ SCR_IMG = %Media_OS%/bckgnd/IMPRESSU.png
 
 // Screenshot folder
 set/ SCR_SAVE = %CPC_TEMP%/SCR
+
+// Define NULL PID variables for first initialization (level 4)
+set/ PID_logon = 0
+set/ PID_desktop = 0
 
 // ******************************************************
 // ** [EN] Starting Graphic User Interface             **
@@ -60,6 +69,8 @@ sys/ /fileformat-gui-load
 
 // Desktop icons
 set/ Desktop_Icons = false
+
+exe/ & %SYSTEM_OS%/startup.cpc
 
 if/ "%desktop_Icons%" == "true" then:
     set/ pos_x = 0
