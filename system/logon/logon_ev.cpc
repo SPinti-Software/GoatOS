@@ -5,9 +5,86 @@ function/ _LOGON_WINDOW.MouseClick()
 
     ccp/ /set.level = 2
 
-    msgbox/ Test!
 
 end/ function
+
+
+
+function/ _LOGON_IMG_USER_1.MouseEnter()
+    // Zoom into image when mouse move
+
+    ccp/ /set.level = 2
+
+    set/ center_point_X = /c(%CPC.SCR.X% / 2)
+    set/ center_point_Y = /c(%CPC.SCR.Y% / 2)
+
+    set/ difference_sizing = 10
+
+    set/ image_SX = 99
+    set/ image_SY = 99
+
+    set/ image_PX = /C((%center_point_X% - (%image_SX% / 2)))
+    set/ image_PY = /C(((%center_point_Y% - (%image_SY% / 2)) - %image_SY%))
+
+    set/ image_PX = /C(%image_PX% - (%difference_sizing% / 2))
+    set/ image_PY = /C(%image_PY% - (%difference_sizing% / 2))
+
+    set/ image_SX = /C(%image_SX% + %difference_sizing%)
+    set/ image_SY = /C(%image_SY% + %difference_sizing%)
+
+    picturebox/ /modif:_LOGON_IMG_USER_1
+        .PX 			= "%image_PX%"
+        .PY 			= "%image_PY%"
+        .SX 			= "%image_SX%"
+        .SY 			= "%image_SY%"
+
+        create/
+    end/ Picturebox
+
+end/ function
+
+function/ _LOGON_IMG_USER_1.MouseLeave()
+    // Zoom into image when mouse leave
+
+    ccp/ /set.level = 2
+
+    set/ center_point_X = /c(%CPC.SCR.X% / 2)
+    set/ center_point_Y = /c(%CPC.SCR.Y% / 2)
+
+    set/ image_SX = 99
+    set/ image_SY = 99
+
+    set/ image_PX = /C(%center_point_X% - (%image_SX% / 2))
+    set/ image_PY = /C((%center_point_Y% - (%image_SY% / 2)) - 99)
+
+    picturebox/ /modif:_LOGON_IMG_USER_1
+        .PX 			= "%image_PX%"
+        .PY 			= "%image_PY%"
+        .SX 			= "%image_SX%"
+        .SY 			= "%image_SY%"
+
+        create/
+    end/ Picturebox
+
+    // Refresh main window graphically 
+    refresh/ _LOGON_WINDOW
+
+end/ function
+
+
+function/ _LOGON_IMG_USER_1.MouseClick()
+
+    // Change logon_name will unblock previous thread
+    set/ LOGON_NAME = %user_name%
+
+    
+
+end/ function
+
+
+
+
+
 
 
 
