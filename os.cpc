@@ -44,6 +44,7 @@ set/ HOST_OS = OS/GOATOS
 set/ SYSTEM_OS = %HOST_OS%/system
 set/ LOGON_OS = %SYSTEM_OS%/logon
 set/ DESKTOP_OS = %SYSTEM_OS%/desktop
+set/ USER_OS = %HOST_OS%/users
 
 set/ Media_OS = %HOST_OS%/media
 set/ GUI_OS = %Media_OS%/GUI

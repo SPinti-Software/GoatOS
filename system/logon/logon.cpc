@@ -1,12 +1,21 @@
 // Logon program
 
+ccp/ /set.level = 4
+
+
+set/ user_name = admin
+
 ccp/ /set.level = 2
 
-set/ logon_siz_x = 200
-set/ logon_siz_y = 150
 
-set/ logon_Pos_X = /c((%CPC.SCR.X% / 2) - (%logon_siz_x% / 2))
-set/ logon_Pos_Y = /c((%CPC.SCR.Y% / 2) - (%logon_siz_y% / 2))
+set/ center_point_X = /c(%CPC.SCR.X% / 2)
+set/ center_point_Y = /c(%CPC.SCR.Y% / 2)
+
+set/ logon_siz_x = %CPC.SCR.X%
+set/ logon_siz_y = %CPC.SCR.Y%
+
+set/ logon_Pos_X = 0
+set/ logon_Pos_Y = 0
 
 window/ _LOGON_WINDOW
 	.title				= "Logon window"
@@ -14,15 +23,78 @@ window/ _LOGON_WINDOW
 	.py					= "%logon_Pos_Y%"
 	.sx					= "%logon_siz_x%"
 	.sy					= "%logon_siz_y%"
-	.opacity			= "150"
-	.parameters			= "TYPE:0 ALPHAMODE:0 BLURRY:6 CTX:1 MINSIZ_X:%logon_siz_x%P MINSIZ_Y:%logon_siz_x%P MAXSIZ_X:600P MAXSIZ_Y:400P"
+	.opacity			= "100"
+	.parameters			= "TYPE:4 ALPHAMODE:0 BLURRY:6 CTX:1"
 	.WindowColor		= "050,050,100"
 	.TitleColor		    = "255,255,255"
 	.BackColor		    = "150,000,220"
-	.icon				= "%OS_GUI%/FORMATS/MFOLDER.png"
-	.event				= "%_EXE_PATH_DIR_%/logon_ev.cpc"
+	.icon				= ""
 
 	@#_Handle_LOGON_WINDOW create/
 end/ window
+
+// Wait few time for effect
+ccp/ /pause 500
+
+
+picturebox/ _LOGON_IMG_BACKGROUND
+	.Handle 		= "%_Handle_LOGON_WINDOW%"
+	.Parameters 	= "IMGAUTO:2"
+	.PX 			= "0"
+	.PY 			= "0"
+	.opacite		= "255"
+	.SX 			= "%logon_siz_x%"
+	.SY 			= "%logon_siz_y%"
+	.Image 			= "%Media_OS%/bckgnd/LOG_TRSP.png"
+	create/
+end/ Picturebox
+
+// ==== User image ==== //
+
+// Wait few time for effect
+ccp/ /pause 500
+
+set/ image_SX = 99
+set/ image_SY = 99
+
+set/ image_PX = /C(%center_point_X% - (%image_SX% / 2))
+set/ image_PY = /C((%center_point_Y% - (%image_SY% / 2)) - 99)
+
+set/ user_path = %USER_OS%/%user_name%
+
+picturebox/ _LOGON_IMG_USER_1
+	.Handle 		= "%_Handle_LOGON_WINDOW%"
+	.Parameters 	= "IMGAUTO:2"
+	.PX 			= "%image_PX%"
+	.PY 			= "%image_PY%"
+	.opacite		= "255"
+	.SX 			= "%image_SX%"
+	.SY 			= "%image_SY%"
+	.Image 			= "%user_path%/image.png"
+	.event			= "%_EXE_PATH_DIR_%/logon_ev.cpc"
+
+	create/
+end/ Picturebox
+
+// ==== User image name ====
+set/ name_SX = 99
+set/ name_SY = 39
+
+set/ name_PX = /C(%center_point_X% - (%name_SX% / 2))
+set/ name_PY = /C(%center_point_Y% - (%name_SY% / 2))
+
+picturebox/ _LOGON_NAME_USER_1
+	.Handle 		= "%_Handle_LOGON_WINDOW%"
+	.Parameters 	= "IMGAUTO:2"
+	.PX 			= "%name_PX%"
+	.PY 			= "%name_PY%"
+	.opacite		= "255"
+	.SX 			= "%name_SX%"
+	.SY 			= "%name_SY%"
+	.Image 			= "%user_path%/name.png"
+	
+
+	create/
+end/ Picturebox
 
 

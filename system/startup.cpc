@@ -1,6 +1,11 @@
 // Startup program after booting.
 
+// Wait few time
+ccp/ /pause 500
+
 ccp/ /set.level = 4
+
+set/ LOGON_NAME = #NULL
 
 if/ "%PID_logon%" == "0" then:
 
@@ -9,6 +14,22 @@ if/ "%PID_logon%" == "0" then:
 
     // Execute logon program into "_GOATOS__LOGON" process
     CMD/ /PID:%PID_logon% exe/ & %LOGON_OS%/logon.cpc
+
+    // Wait LOGON_NAME variable will change
+    ccp/ /change:LOGON_NAME
+
+    // When LOGON_NAME variable have changed, we close process !
+    close/ /pid:%PID_logon%
+
+    // Wait few time
+    ccp/ /pause 500
+
+    // Create desktop process
+    @#PID_desktop SYS/ /processus _GOATOS__DEKSTOP
+
+    CMD/ /PID:%PID_desktop% exe/ & %DESKTOP_OS%/desktop.cpc
+
+    
 
 end/ if
 
