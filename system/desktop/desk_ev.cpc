@@ -1,6 +1,6 @@
 
 
-function/ _DESKTOP_WINDOW.MouseClick()
+function/ _DESKTOP_WINDOW.Click()
 
     ccp/ /set.level = 2
 
