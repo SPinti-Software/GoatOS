@@ -2,11 +2,17 @@
 
 ccp/ /set.level = 4
 
+// Getting user list
+exe/ & %LOGON_OS%/usr_list.cpc
 
-set/ user_name = admin
+// Select user index
+set/ user_index = 0
+
+// Getting current user
+txt/ Selected user : %user_list[user_index]%
+exe/ & %USER_OS%/%user_list[user_index]%/user.cpc
 
 ccp/ /set.level = 2
-
 
 set/ center_point_X = /c(%CPC.SCR.X% / 2)
 set/ center_point_Y = /c(%CPC.SCR.Y% / 2)
@@ -60,7 +66,7 @@ set/ image_SY = 99
 set/ image_PX = /C(%center_point_X% - (%image_SX% / 2))
 set/ image_PY = /C((%center_point_Y% - (%image_SY% / 2)) - 99)
 
-set/ user_path = %USER_OS%/%user_name%
+
 
 picturebox/ _LOGON_IMG_USER_1
 	.Handle 		= "%_Handle_LOGON_WINDOW%"

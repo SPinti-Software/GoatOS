@@ -1,0 +1,9 @@
+
+ccp/ /set.level = 4
+
+set/ user_nb = 1
+
+set/ user_list[0] = admin
+set/ user_list[1] = user
+
+

@@ -1,0 +1,9 @@
+ccp/ /set.level = 4
+
+
+set/ user_name = admin
+set/ user_password = 9652243178113
+
+set/ user_path = %USER_OS%/%user_name%
+
+

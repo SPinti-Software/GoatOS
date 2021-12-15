@@ -19,7 +19,7 @@ window/ _DESKTOP_WINDOW
 	.TitleColor		    = "255,255,255"
 	.BackColor		    = "150,000,220"
 	.icon				= "%OS_GUI%/FORMATS/MFOLDER.png"
-	.event				= "%_EXE_PATH_DIR_%/desktop_ev.cpc"
+	.event				= "%_EXE_PATH_DIR_%/desk_ev.cpc"
 
 	@#_Handle_LOGON_WINDOW create/
 end/ window

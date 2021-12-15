@@ -4,7 +4,7 @@ function/ _DESKTOP_WINDOW.MouseClick()
 
     ccp/ /set.level = 2
 
-    msgbox/ Test!
+    msgbox/ Test! '%user_name%' -- '%user_path%'
 
 end/ function
 
