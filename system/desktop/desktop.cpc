@@ -1,28 +1,85 @@
 
 ccp/ /set.level = 2
 
-set/ desktop_siz_x = 200
-set/ desktop_siz_y = 150
+set/ START_MENU_siz_x = 500
+set/ START_MENU_siz_y = 30
 
-set/ desktop_Pos_X = /c((%CPC.SCR.X% / 2) - (%desktop_siz_x% / 2))
-set/ desktop_Pos_Y = /c((%CPC.SCR.Y% / 2) - (%desktop_siz_y% / 2))
+set/ START_MENU_Pos_X = /c((%CPC.SCR.X% / 2) - (%START_MENU_siz_x% / 2))
+set/ START_MENU_Pos_Y = 0
 
-window/ _DESKTOP_WINDOW
-	.title				= "desktop window"
-	.px					= "%desktop_Pos_X%"
-	.py					= "%desktop_Pos_Y%"
-	.sx					= "%desktop_siz_x%"
-	.sy					= "%desktop_siz_y%"
+window/ _START_MENU_WINDOW
+	.title				= "START_MENU window"
+	.px					= "%START_MENU_Pos_X%"
+	.py					= "%START_MENU_Pos_Y%"
+	.sx					= "%START_MENU_siz_x%"
+	.sy					= "%START_MENU_siz_y%"
 	.opacity			= "150"
-	.parameters			= "TYPE:0 ALPHAMODE:0 BLURRY:6 CTX:1 MINSIZ_X:%desktop_siz_x%P MINSIZ_Y:%desktop_siz_x%P MAXSIZ_X:600P MAXSIZ_Y:400P"
+	.parameters			= "TYPE:4 CTN:1 BORD:0 MOVE:0 SIZ:0 SHADOW:1 TASKBAR:0 CLOSE:0 REDUCT:0 SIZEBTN:0 COLLISION:0"
 	.WindowColor		= "050,050,100"
 	.TitleColor		    = "255,255,255"
 	.BackColor		    = "150,000,220"
-	.icon				= "%OS_GUI%/FORMATS/MFOLDER.png"
+
 	.event				= "%_EXE_PATH_DIR_%/desk_ev.cpc"
 
-	@#_Handle_LOGON_WINDOW create/
+	@#_Handle_START_MENU_WINDOW create/
 end/ window
+
+
+picturebox/ _START_MENU_IMG_LEFT
+	.Handle 		= "%_Handle_START_MENU_WINDOW%"
+	.Parameters 	= "IMGAUTO:0"
+	.PX 			= "0"
+	.PY 			= "0"
+	.opacite		= "255"
+	.SX 			= "4"
+	.SY 			= "8"
+	.Image 			= "%Media_OS%/DESKTOP/SM_L.png"
+	create/
+end/ Picturebox
+
+
+set/ START_MENU_IMG_MIDDLE_siz_x = /C(%START_MENU_siz_x% - 9)
+
+picturebox/ _START_MENU_IMG_MIDDLE
+	.Handle 		= "%_Handle_START_MENU_WINDOW%"
+	.Parameters 	= "IMGAUTO:2"
+	.PX 			= "4"
+	.PY 			= "0"
+	.opacite		= "255"
+	.SX 			= "%START_MENU_siz_x%"
+	.SY 			= "8"
+	.Image 			= "%Media_OS%/DESKTOP/SM_M.png"
+	create/
+end/ Picturebox
+
+set/ START_MENU_IMG_RIGHT_pos_x = /C(%START_MENU_siz_x% - 4)
+
+picturebox/ _START_MENU_IMG_RIGHT
+	.Handle 		= "%_Handle_START_MENU_WINDOW%"
+	.Parameters 	= "IMGAUTO:0"
+	.PX 			= "0"
+	.PY 			= "0"
+	.opacite		= "255"
+	.SX 			= "%START_MENU_IMG_RIGHT_pos_x%"
+	.SY 			= "8"
+	.Image 			= "%Media_OS%/DESKTOP/SM_R.png"
+	create/
+end/ Picturebox
+
+
+
+picturebox/ _START_MENU_bouton
+	.Handle 		= "%_Handle_START_MENU_WINDOW%"
+	.Parameters 	= "IMGAUTO:1"
+	.PX 			= "2"
+	.PY 			= "2"
+	.opacite		= "255"
+	.SX 			= "0"
+	.SY 			= "0"
+	.Image 			= "%Media_OS%/GUI/FORMATS/MCPC.png"
+	create/
+end/ Picturebox
+
 
 
 
