@@ -7,7 +7,7 @@ CCP/ /SET.LEVEL = 5
 
 // [FR] 0:Desactive / 1:Active  le screen boot
 // [EN] 0:Disable   / 1:Enable  screen boot
-set/ cpc_sys.boot.bootscreen.gui = 0
+set/ cpc_sys.boot.bootscreen.gui = 1
 
 
 // [FR] Resolution d'ecran
@@ -22,7 +22,7 @@ set/ cpc_sys.boot.bootscreen.fps = 10
 
 // [FR] Nombre d'images max
 // [EN] Max number frames
-set/ cpc_sys.boot.bootscreen.size = 21
+set/ cpc_sys.boot.bootscreen.size = 60
 
 
 // [FR] Numero d'image de commencement
@@ -32,7 +32,7 @@ set/ cpc_sys.boot.bootscreen.begin = 0
 
 // [FR] Numero d'image de bouclage
 // [EN] Looping image number
-set/ cpc_sys.boot.bootscreen.loop = 0 
+set/ cpc_sys.boot.bootscreen.loop = 13
 
 // [FR] Degrade sombre d'entre et sortie (0:Desactive, 1:Debut, 2:Fin, 3:Les deux)
 // [EN] Dark entry and exit (0:Disable, 1:Begin, 2:End, 3:Both)
