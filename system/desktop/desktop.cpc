@@ -1,12 +1,18 @@
 
 ccp/ /set.level = 2
 
+// Menu start size
 set/ START_MENU_siz_x = 500
 set/ START_MENU_siz_y = 30
 
+// Menu start position
 set/ START_MENU_Pos_X = /c((%CPC.SCR.X% / 2) - (%START_MENU_siz_x% / 2))
 set/ START_MENU_Pos_Y = 0
 
+// Size of border imgage
+set/ START_MENU_siz_border = 7
+
+// Menu start windows
 window/ _START_MENU_WINDOW
 	.title				= "START_MENU window"
 	.px					= "%START_MENU_Pos_X%"
@@ -14,7 +20,7 @@ window/ _START_MENU_WINDOW
 	.sx					= "%START_MENU_siz_x%"
 	.sy					= "%START_MENU_siz_y%"
 	.opacity			= "150"
-	.parameters			= "TYPE:4 CTN:1 BORD:0 MOVE:0 SIZ:0 SHADOW:1 TASKBAR:0 CLOSE:0 REDUCT:0 SIZEBTN:0 COLLISION:0"
+	.parameters			= "TYPE:5 CTN:1 BORD:0 MOVE:0 SIZ:0 SHADOW:1 TASKBAR:0 CLOSE:0 REDUCT:0 SIZEBTN:0 COLLISION:0"
 	.WindowColor		= "050,050,100"
 	.TitleColor		    = "255,255,255"
 	.BackColor		    = "150,000,220"
@@ -24,50 +30,73 @@ window/ _START_MENU_WINDOW
 	@#_Handle_START_MENU_WINDOW create/
 end/ window
 
+// Border image for DOWN position
+set/ START_MENU_IMG_pos_Y = /C(%START_MENU_siz_y% + %START_MENU_Pos_Y% - %START_MENU_siz_border%)
 
+// Left border image
 picturebox/ _START_MENU_IMG_LEFT
 	.Handle 		= "%_Handle_START_MENU_WINDOW%"
 	.Parameters 	= "IMGAUTO:0"
 	.PX 			= "0"
-	.PY 			= "0"
-	.opacite		= "255"
-	.SX 			= "4"
-	.SY 			= "8"
+	.PY 			= "%START_MENU_IMG_pos_Y%"
+	.opacite		= "180"
+	.SX 			= "7"
+	.SY 			= "7"
 	.Image 			= "%Media_OS%/DESKTOP/SM_L.png"
 	create/
 end/ Picturebox
 
 
-set/ START_MENU_IMG_MIDDLE_siz_x = /C(%START_MENU_siz_x% - 9)
+// Size X of down image between two borders
+set/ START_MENU_IMG_MIDDLE_siz_x = /C(%START_MENU_siz_x% - (%START_MENU_siz_border% * 2))
 
-picturebox/ _START_MENU_IMG_MIDDLE
+// Mittle down border image
+picturebox/ _START_MENU_IMG_MIDDLE_DOWN
 	.Handle 		= "%_Handle_START_MENU_WINDOW%"
 	.Parameters 	= "IMGAUTO:2"
-	.PX 			= "4"
-	.PY 			= "0"
-	.opacite		= "255"
-	.SX 			= "%START_MENU_siz_x%"
-	.SY 			= "8"
+	.PX 			= "%START_MENU_siz_border%"
+	.PY 			= "%START_MENU_IMG_pos_Y%"
+	.opacite		= "180"
+	.SX 			= "%START_MENU_IMG_MIDDLE_siz_x%"
+	.SY 			= "7"
 	.Image 			= "%Media_OS%/DESKTOP/SM_M.png"
 	create/
 end/ Picturebox
 
-set/ START_MENU_IMG_RIGHT_pos_x = /C(%START_MENU_siz_x% - 4)
+// Size_y of middle image
+set/ START_MENU_IMG_MIDDLE_siz_y = /C(%START_MENU_siz_y% - %START_MENU_siz_border%)
 
+// Middle image
+picturebox/ _START_MENU_IMG_MIDDLE_UP
+	.Handle 		= "%_Handle_START_MENU_WINDOW%"
+	.Parameters 	= "IMGAUTO:2"
+	.PX 			= "0"
+	.PY 			= "0"
+	.opacite		= "180"
+	.SX 			= "%START_MENU_siz_x%"
+	.SY 			= "%START_MENU_IMG_MIDDLE_siz_y%"
+	.Image 			= "%Media_OS%/DESKTOP/SM_BCK.png"
+	create/
+end/ Picturebox
+
+// Right down border image
+set/ START_MENU_IMG_RIGHT_pos_x = /C(%START_MENU_siz_x% - %START_MENU_siz_border%)
+
+// Right down border image
 picturebox/ _START_MENU_IMG_RIGHT
 	.Handle 		= "%_Handle_START_MENU_WINDOW%"
 	.Parameters 	= "IMGAUTO:0"
-	.PX 			= "0"
-	.PY 			= "0"
-	.opacite		= "255"
-	.SX 			= "%START_MENU_IMG_RIGHT_pos_x%"
-	.SY 			= "8"
+	.PX 			= "%START_MENU_IMG_RIGHT_pos_x%"
+	.PY 			= "%START_MENU_IMG_pos_Y%"
+	.opacite		= "180"
+	.SX 			= "7"
+	.SY 			= "7"
 	.Image 			= "%Media_OS%/DESKTOP/SM_R.png"
 	create/
 end/ Picturebox
 
 
-
+// First test button
 picturebox/ _START_MENU_bouton
 	.Handle 		= "%_Handle_START_MENU_WINDOW%"
 	.Parameters 	= "IMGAUTO:1"
@@ -80,6 +109,8 @@ picturebox/ _START_MENU_bouton
 	create/
 end/ Picturebox
 
+
+stop/ 
 
 
 
