@@ -10,4 +10,17 @@ end/ function
 
 
 
+function/ _START_MENU_bouton.MouseEnter()
+    refresh/ _START_MENU_bouton
+end/ function
+
+function/ _START_MENU_bouton.MouseLeave()
+    refresh/ _START_MENU_bouton
+end/ function
+
+function/ _START_MENU_bouton.Click()
+
+end/ function
+
+
 

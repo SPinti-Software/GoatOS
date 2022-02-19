@@ -95,18 +95,21 @@ picturebox/ _START_MENU_IMG_RIGHT
 	create/
 end/ Picturebox
 
+sys/ /debug = 2
 
 // First test button
 picturebox/ _START_MENU_bouton
 	.Handle 		= "%_Handle_START_MENU_WINDOW%"
-	.Parameters 	= "IMGAUTO:1"
+	.Parameters 	= "IMGAUTO:1 SURBRILLE:255"
 	.PX 			= "2"
 	.PY 			= "2"
 	.opacite		= "255"
 	.SX 			= "0"
 	.SY 			= "0"
-	.Image 			= "%Media_OS%/GUI/FORMATS/MCPC.png"
+	.Image 			= "%Media_OS%/DESKTOP/goat_btn.png"
+	.event			= "%_exe_path_dir_%/desk_ev.cpc"
 	create/
+
 end/ Picturebox
 
 
